@@ -2,26 +2,50 @@
 //
 
 #include <iostream>
+#include <set>
 #include "Tree.h"
 #include "Board.h"
+#include "AStarTree.h"
+#include <list>
+#include <algorithm>
 
-void Start();
-
+void StartBreadthFirst();
+void StartAStar();
 int main()
 {
-	Start();
-	int i = 0;
+	int input;
+
+	std::cout << "########## BFS ##########" << std::endl;
+	StartBreadthFirst();
+	std::cout << std::endl;
+
+	std::cin >> input;
+	std::cout << std::endl;
+
+
+	std::cout << "########## A* ##########" << std::endl;
+	StartAStar();
+	std::cout << std::endl;
 }
 
-void Start() 
+void StartBreadthFirst() 
 {
-	Board board = Board(3, 3);
-	Board solution = Board(3, 3);
+	Algorithm::Board board = Algorithm::Board(3, 3);
+	Algorithm::Board solution = Algorithm::Board(3, 3);
 	board.Shuffle(13230);
 	board.Draw();
 	std::cout << std::endl;
 
-	Tree tree = Tree(board, solution);
+	Algorithm::BreadthFirst::Tree tree = Algorithm::BreadthFirst::Tree(board, solution);
+	int i = 0;
+}
+void StartAStar()
+{
+	Algorithm::Board board = Algorithm::Board(3, 3);
+	Algorithm::Board solution = Algorithm::Board(3, 3);
+	board.Shuffle(13230);
+
+	Algorithm::AStar::AStarTree tree = Algorithm::AStar::AStarTree(board, solution);
 	int i = 0;
 }
 
